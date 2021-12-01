@@ -68,13 +68,13 @@
 | employees     | Zero-or-One          | orders               |  One-or-Many         | One-to-Many  |
 | employees     | Zero-or-One          | employees            |  One-or-Many         | One-to-Many  |
 | employees     | -                    | territories          | -                    | Many-to-Many |
-| customers     | Zero-or-One          | orders               |                      | One-to-Many  |
+| customers     | Zero-or-One          | orders               |  One-or-Many         | One-to-Many  |
 | customers     | -                    | customerdemographics | -                    | Many-to-Many |
-| orders        | One-only-One         | orderdetails         |                      | One-to-Many  |
-| products      | One-only-One         | orderdetails         |                      | One-to-Many  |
-| suppliers     | Zero-or-One          | products             |                      | One-to-Many  |
-| categories    | Zero-or-One          | products             |                      | One-to-Many  |
-| region        | One-only-One         | territories          |                      | One-to-Many  |
+| orders        | One-only-One         | orderdetails         |  One-or-Many         | One-to-Many  |
+| products      | One-only-One         | orderdetails         |  One-or-Many         | One-to-Many  |
+| suppliers     | Zero-or-One          | products             |  Zero-or-One-or-Many | One-to-Many  |
+| categories    | Zero-or-One          | products             |  One-or-Many         | One-to-Many  |
+| region        | One-only-One         | territories          |  One-or-Many         | One-to-Many  |
 
 4. Выясните тип отношений между таблицами базы данных. Заполните колонку Relationship в таблице выше. Используйте статью [Many-to-Many Relationship in the Northwind database](http://blog.codeontime.com/2012/04/many-to-many-relationship-in-northwind.html), чтобы найти связи типа "многие-ко-многим".
 
@@ -87,21 +87,21 @@
 
 1. Создайте в Postman новую коллекцию с именем Northwind, в этой коллекции создайте такие запросы к [Northwind OData Service](https://services.odata.org/V3/Northwind/Northwind.svc/), которые будут удовлетворять описанию из таблицы ниже. После проверки запроса, занесите необходимые параметры в таблицу:
 
-| Query Description                                                 | HTTP Verb | Url                        |
-| ----------------------------------------------------------------- | --------- | -------------------------- |
-| Get service metadata.                                             | GET       | /$metadata                 |
-| Get all customers.                                                |           |                            |
-| Get a customer with "ALFKI" id.                                   |           |                            |
-| Get all orders.                                                   |           |                            |
-| Get an order with "10248" id.                                     |           |                            |
-| Get all orders for a customer with "ANATR" id.                    |           |                            |
-| Get a customer for an order with "10248" id.                      |           |                            |
-| Get a customer for an order with "10248" id.                      |           |                            |
-| Get all customers from Germany.                                   |           |                            |
-| Get all orders shipped to France in 1997.                         |           |                            |
-| Get all products with units in stock less than 20.                |           |                            |
-| Get all orders shipped by company "Speedy Express".               |           |                            |
-| Get all orders shipped to UK with employees.                      |           |                            |
+| Query Description                                                 | HTTP Verb | Url                                 	 |
+| ----------------------------------------------------------------- | --------- | ------------------------------------	 | 
+| Get service metadata.                                             | GET       | /$metadata                          	 |
+| Get all customers.                                                | GET       | /Customers                          	 |
+| Get a customer with "ALFKI" id.                                   | GET       | /Customers('ALFKI')                 	 |
+| Get all orders.                                                   | GET       | /Orders                             	 |
+| Get an order with "10248" id.                                     | GET       | /Orders(10248)                      	 |
+| Get all orders for a customer with "ANATR" id.                    | GET       | /Customers('ANATR')/Orders          	 |
+| Get a customer for an order with "10248" id.                      | GET       | /Orders(10248)/Customer 		 |
+| Get a customer for an order with "10248" id.                      | GET       | /Orders(10248)/Customer             	 |
+| Get all customers from Germany.                                   | GET       | /Customers?$filter=Country eq 'Germany'|
+| Get all orders shipped to France in 1997.                         | GET       | /Orders?$filter=ShippedDate gt DateTime'1997-01-29T09:13:28'|
+| Get all products with units in stock less than 20.                | GET       | /Products?$filter=UnitsInStock lt 20   |
+| Get all orders shipped by company "Speedy Express".               | GET       | /Shippers?$expand=Orders&$filter=CompanyName eq 'Speedy Express'| 
+| Get all orders shipped to UK with employees.                      | GET       | /Orders?$filter=ShipCountry eq 'UK'&$expand=Employee|
 
 Создайте самостоятельно еще минимум 5 сложных запросов и запишите их в таблицу.
 

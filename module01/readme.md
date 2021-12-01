@@ -65,16 +65,16 @@
 | PK Table      | Cardinality PK Table | FK Table             | Cardinality FK Table | Relationship |
 | ------------- | -------------------- | -------------------- | -------------------- | ------------ |
 | shippers      | Zero-or-One          | orders               |  One-or-Many         | One-to-Many  |
-| employees     |                      | orders               |                      |              |
-| employees     |                      | employees            |                      |              |
-| employees     | -                    | territories          | -                    |              |
-| customers     |                      | orders               |                      |              |
-| customers     | -                    | customerdemographics | -                    |              |
-| orders        |                      | orderdetails         |                      |              |
-| products      |                      | orderdetails         |                      |              |
-| suppliers     |                      | products             |                      |              |
-| categories    |                      | products             |                      |              |
-| region        |                      | territories          |                      |              |
+| employees     | Zero-or-One          | orders               |  One-or-Many         | One-to-Many  |
+| employees     | Zero-or-One          | employees            |  One-or-Many         | One-to-Many  |
+| employees     | -                    | territories          | -                    | Many-to-Many |
+| customers     | Zero-or-One          | orders               |                      | One-to-Many  |
+| customers     | -                    | customerdemographics | -                    | Many-to-Many |
+| orders        | One-only-One         | orderdetails         |                      | One-to-Many  |
+| products      | One-only-One         | orderdetails         |                      | One-to-Many  |
+| suppliers     | Zero-or-One          | products             |                      | One-to-Many  |
+| categories    | Zero-or-One          | products             |                      | One-to-Many  |
+| region        | One-only-One         | territories          |                      | One-to-Many  |
 
 4. Выясните тип отношений между таблицами базы данных. Заполните колонку Relationship в таблице выше. Используйте статью [Many-to-Many Relationship in the Northwind database](http://blog.codeontime.com/2012/04/many-to-many-relationship-in-northwind.html), чтобы найти связи типа "многие-ко-многим".
 

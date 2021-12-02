@@ -285,12 +285,12 @@ foreach (var person in employees)
 
 | Breakpoint | Thread ID   | Thread Managed ID | Thread Name |
 | ---------- | ----------- | ----------------- | ----------- |
-| #1.1       |             |                   |             |
-| #1.2       |             |                   |             |
-| #1.3       |             |                   |             |
-| #2.1       |             |                   |             |
-| #2.2       |             |                   |             |
-| #2.3       |             |                   |             |
+| #1.1       | 5784        | 0                 | Main Thread |
+| #1.2       | 19088       | 7                 | Worker Thread|
+| #1.3       | 5784        | 1                 | Main Thread |
+| #2.1       | 15396       | 1                 | Main Thread |
+| #2.2       | 17944       | 9                 | Worker Thread|
+| #2.3       | 17944       | 9                 | Worker Thread|
 
 В чем разница между двумя подходами для брейкпоинтов #1.3 и #2.3?
 

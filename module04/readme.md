@@ -45,11 +45,11 @@ __Внимание!__ В этом модуле используется боль
 
 | Operation        | HTTP Verb | URI                  | Request body | Response body |
 | ---------------- | --------- | -------------------- | ------------ |  ------------ |
-| Create           |           | /api/categories      |              |               |
-| Read (all items) |           | /api/categories      |              |               |
-| Read (item)      |           | /api/categories/{id} |              |               |
-| Update           |           | /api/categories/{id} |              |               |
-| Delete           |           | /api/categories/{id} |              |               |
+| Create           |  POST     | /api/categories      |              |               |
+| Read (all items) |  GET      | /api/categories      |              |               |
+| Read (item)      |  GET      | /api/categories/{id} |              |               |
+| Update           |  PUT      | /api/categories/{id} |              |               |
+| Delete           |  DELETE   | /api/categories/{id} |              |               |
 
 6. Реализуйте все методы для _ProductCategoriesController_, используя методы интерфейса _IProductManagementService_. См. [Controller action return types in ASP.NET Core web API](https://docs.microsoft.com/en-us/aspnet/core/web-api/action-return-types).
 7. Реализуйте в _ProductManagementService_ использованные методы интерфейса _IProductManagementService_. В качестве хранилища используйте in-memory database. Добавьте классы - контекст _NorthwindContext_ и необходимые сущности. Запустите приложение и проверьте работоспособность методов при помощи Postman.
